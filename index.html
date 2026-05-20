@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моя презентация - Портфолио</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            color: #764ba2;
+            font-size: 1.2em;
+        }
+
+        .timeline {
+            display: grid;
+            gap: 25px;
+        }
+
+        .entry {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .entry:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .date {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .section-title {
+            color: #667eea;
+            font-size: 1.5em;
+            margin: 20px 0 15px 0;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .faq-block {
+            background: #f8f9ff;
+            border-left: 4px solid #667eea;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            color: #764ba2;
+            margin-bottom: 8px;
+        }
+
+        .faq-answer {
+            color: #555;
+            padding-left: 15px;
+        }
+
+        .similarity {
+            color: #28a745;
+            font-size: 0.9em;
+            font-style: italic;
+        }
+
+        .math-block {
+            background: #f0f4ff;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin: 10px 10px 10px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .stat-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .image-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .data-structures {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .structure-card {
+            background: white;
+            border: 3px solid #667eea;
+            padding: 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .structure-card:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .structure-title {
+            font-weight: bold;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #764ba2;
+        }
+
+        .structure-card:hover .structure-title {
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            padding: 20px;
+            font-size: 1.1em;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .entry { padding: 20px; }
+            .stats-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Моя презентация</h1>
+            <p class="subtitle">Портфолио проектов и исследований 2026</p>
+        </header>
+
+        <div class="timeline">
+            <!-- 16 февраля -->
+            <div class="entry">
+                <div class="date">📅 16 февраля 2026</div>
+                
+                <h2 class="section-title">🤖 FAQ Бот - Примеры ответов</h2>
+                
+                <div class="faq-block">
+                    <div class="faq-question">❓ Вопрос: Сколько ждать мой заказ?</div>
+                    <div class="similarity">Найден похожий вопрос (similarity: 0.706)</div>
+                    <div class="faq-answer">💬 Наш стандартный срок доставки — 3–5 рабочих дней.</div>
+                </div>
+
+                <div class="faq-block">
+                    <div class="faq-question">❓ Вопрос: Как оплатить заказ?</div>
+                    <div class="similarity">Точное совпадение (similarity: 0.941)</div>
+                    <div class="faq-answer">💬 Оплата возможна через банковскую карту, PayPal или наличными при получении.</div>
+                </div>
+
+                <div class="highlight">
+                    <h3>📎 Полезные материалы:</h3>
+                    <a href="СетьВводный.pptx" class="btn">📄 Презентация .pptx</a>
+                    <a href="index.html" class="btn">🌐 Файл проверки кириллицы .html</a>
+                </div>
+            </div>
+
+            <!-- 25 февраля -->
+            <div class="entry">
+                <div class="date">📅 25 февраля 2026</div>
+                
+                <h2 class="section-title">🔢 Математические вычисления</h2>
+                
+                <div class="math-block">
+                    <p><strong>Криптоарифметика:</strong></p>
+                    <p>9567 + 1085 = 10652</p>
+                    <p>Расшифровка: {'S': 9, 'E': 5, 'N': 6, 'D': 7, 'M': 1, 'O': 0, 'R': 8, 'Y': 2}</p>
+                </div>
+
+                <h3 class="section-title">📐 Методы округления</h3>
+                
+                <div class="highlight">
+                    <h4>✅ Честное округление (Random Error):</h4>
+                    <div class="math-block">
+                        4.162 → 4.16 (остаток: +0.00200)<br>
+                        4.168 → 4.17 (остаток: -0.00200)<br>
+                        4.174 → 4.17 (остаток: +0.00400)<br>
+                        4.179 → 4.18 (остаток: -0.00100)
+                    </div>
+                </div>
+
+                <div class="highlight" style="background: linear-gradient(135deg, #ff7675, #d63031); color: white;">
+                    <h4>⚠️ Усечение / Truncation (Systematic Bias):</h4>
+                    <div class="math-block" style="background: rgba(255,255,255,0.2);">
+                        4.162 → 4.16 (остаток: +0.00200)<br>
+                        4.168 → 4.16 (остаток: +0.00800)<br>
+                        4.174 → 4.17 (остаток: +0.00400)<br>
+                        4.179 → 4.17 (остаток: +0.00900)
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7 марта -->
+            <div class="entry">
+                <div class="date">📅 7 марта 2026</div>
+                <h2 class="section-title">🎁 Праздничная презентация</h2>
+                <a href="https://ваш-сайт.ru/presentations/23_февраля_и_8_марта_с_кошечками.pptx" class="btn" download>
+                    📥 Скачать презентацию к 23 февраля и 8 марта
+                </a>
+            </div>
+
+            <!-- 18 марта -->
+            <div class="entry">
+                <div class="date">📅 18 марта 2026</div>
+                <h2 class="section-title">📚 Прогнозирование успеваемости</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">5</div>
+                        <div class="stat-label">часов обучения</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">50.23</div>
+                        <div class="stat-label">прогнозируемых баллов</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 21 марта -->
+            <div class="entry">
+                <div class="date">📅 21 марта 2026</div>
+                <h2 class="section-title">🚗 Модель КАСКО</h2>
+                <div class="stats-grid">
+                    <div class="stat-card" style="background: linear-gradient(135deg, #00b894, #00cec9);">
+                        <div class="stat-value">100%</div>
+                        <div class="stat-label">Точность модели</div>
+                    </div>
+                    <div class="stat-card" style="background: linear-gradient(135deg, #fd79a8, #e84393);">
+                        <div class="stat-value">0.69</div>
+                        <div class="stat-label">Коэффициент</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 23 марта -->
+            <div class="entry">
+                <div class="date">📅 23 марта 2026</div>
+                <h2 class="section-title">🧠 Нейронные сети - Результаты</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">0.0221</div>
+                        <div class="stat-label">MSE на обучении</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">0.0277</div>
+                        <div class="stat-label">MSE на тесте</div>
+                    </div>
+                </div>
+
+                <div class="highlight">
+                    <h3>Итоговые результаты:</h3>
+                    <div class="math-block">
+                        Ошибка на обучении (MSE): 0.0041<br>
+                        Ошибка на тесте (MSE): 0.0042
+                    </div>
+                </div>
+
+                <p style="background: #fff3cd; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107;">
+                    <strong>⚠️ Важно:</strong> Нейросеть не интерпретируема на человеческом уровне
+                </p>
+
+                <div class="image-container">
+                    <img src="сестра врач 2.drawio.png" alt="Схема: сестра врач">
+                </div>
+            </div>
+
+            <!-- 31 марта -->
+            <div class="entry">
+                <div class="date">📅 31 марта 2026</div>
+                <h2 class="section-title">🏥 Медицинская схема</h2>
+                <div class="image-container">
+                    <img src="операция.drawio.png" alt="Схема операции">
+                </div>
+                <div class="image-container">
+                    <img src="КУзьма.drawio.png" alt="Схема Кузьма">
+                </div>
+            </div>
+
+            <!-- Структуры данных -->
+            <div class="entry">
+                <div class="date">📅 Апрель 2026</div>
+                <h2 class="section-title">💻 Структуры данных</h2>
+                
+                <div class="data-structures">
+                    <div class="structure-card">
+                        <div class="structure-title">📋 Список (List)</div>
+                        <p>Простота использования, но сложная навигация по элементам</p>
+                    </div>
+                    <div class="structure-card">
+                        <div class="structure-title">📊 Массив (Array)</div>
+                        <p>Эффективен для числовых операций и математических вычислений</p>
+                    </div>
+                    <div class="structure-card">
+                        <div class="structure-title">🗂️ Словарь (Dictionary)</div>
+                        <p>Наиболее удобен для иерархических данных с именованными ключами</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4 мая -->
+            <div class="entry">
+                <div class="date">📅 4 мая 2026</div>
+                <h2 class="section-title">📊 Табличные данные</h2>
+                <div class="image-container">
+                    <a href="Новая таблица 1.xlsx" class="btn">📥 Скачать таблицу Excel</a>
+                </div>
+            </div>
+
+            <!-- 6 мая -->
+            <div class="entry">
+                <div class="date">📅 6 мая 2026</div>
+                <h2 class="section-title">🎯 Кроссворд</h2>
+                <div class="image-container">
+                    <a href="крассворд.xlsx" class="btn">📥 Скачать кроссворд</a>
+                </div>
+            </div>
+
+            <!-- Дополнительные материалы -->
+            <div class="entry">
+                <div class="date">📅 Май 2026</div>
+                <h2 class="section-title">📁 Дополнительные материалы</h2>
+                
+                <div class="image-container">
+                    <img src="istockphoto-2136415254-612x612.jpg" alt="Фото">
+                </div>
+                
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="TablicProc.docx" class="btn">📄 TablicProc.docx</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2026 Моя презентация | Создано с ❤️</p>
+        </footer>
+    </div>
+</body>
+</html>
